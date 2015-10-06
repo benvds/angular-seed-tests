@@ -1,0 +1,26 @@
+<p>This is the partial for view 1.</p>
+
+<form class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-3 control-label">choice</label>
+		<div class="col-sm-9">
+
+			<ui-select multiple ng-model="vm.choice">
+				<ui-select-match placeholder="Make a selection&hellip;">{{$item.label}}</ui-select-match>
+				<!-- <ui-select-choices repeat="option as option in options | filter: $select.search">
+					<div ng-bind-html="option.label | highlight: $select.search"></div>
+				</ui-select-choices> -->
+				<ui-select-choices repeat="option as option in options | filter: $select.search track by option.id"
+					refresh="getOptions($select.search)"
+					refresh-delay="0">
+					<div ng-bind-html="option.label | highlight: $select.search"></div>
+				</ui-select-choices>
+			</ui-select>
+
+		</div>
+	</div>
+</form>
+
+<div ng-show="hasOneChoice">
+	<button type="button" ng-click="next()" ng-disabled="!canSelectNextOption">next</button>
+</div>
